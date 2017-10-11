@@ -36,7 +36,7 @@
  */
 
 /**
- * \addtogroup    EMBARC_APP_FREERTOS_IBABY_SMARTHOME_NODES_WEARABLE_NODE_
+ * \addtogroup    EMBARC_APP_FREERTOS_IOT_IBABY_SMARTHOME_MULTINODE_WEARABLE_NODE
  * @{
  */
 #ifndef _PROCESS_HRATE_H_
@@ -49,4 +49,4 @@ extern void hrate_detector_start(void);
 
 #endif/* _PROCESS_HRATE_H_ */
 
-/** @} end of group EMBARC_APP_FREERTOS_IBABY_SMARTHOME_NODES_WEARABLE_NODE */
+/** @} end of group EMBARC_APP_FREERTOS_IOT_IBABY_SMARTHOME_MULTINODE_WEARABLE_NODE */

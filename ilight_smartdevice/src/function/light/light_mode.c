@@ -32,12 +32,12 @@
 --------------------------------------------- */
 /**
  * \file
- * \ingroup	EMBARC_APP_FREERTOS_ILIGHT_SMARTDEVICE
+ * \ingroup	EMBARC_APP_FREERTOS_IOT_ILIGHT_SMARTDEVICE
  * \brief	light control mode for ilight
  */
 
 /**
- * \addtogroup	EMBARC_APP_FREERTOS_ILIGHT_SMARTDEVICE
+ * \addtogroup	EMBARC_APP_FREERTOS_IOT_ILIGHT_SMARTDEVICE
  * @{
  */
 
@@ -1138,4 +1138,4 @@ void light_mode_test()
 	vTaskDelay(800);
 }
 
-/** @} end of group EMBARC_APP_FREERTOS_ILIGHT_SMARTDEVICE */
+/** @} end of group EMBARC_APP_FREERTOS_IOT_ILIGHT_SMARTDEVICE */

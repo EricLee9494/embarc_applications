@@ -82,4 +82,4 @@ extern void light_mode_top_pack(uint8_t mode,uint8_t bri,uint8_t freq,uint8_t ti
 
 #endif  /* _LIGHT_MODE_H_ */
 
-/** @} end of group EMBARC_APP_FREERTOS_ILIGHT_SMARTDEVICE */
+/** @} end of group EMBARC_APP_FREERTOS_IOT_ILIGHT_SMARTDEVICE */

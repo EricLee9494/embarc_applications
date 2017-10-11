@@ -32,11 +32,12 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_OT_SMARTHOME_MULTINODE_FRONTDOOR	embARC OpenThread application on MRF24J40
+ * \defgroup	EMBARC_APP_BAREMETAL_OT_SMARTHOME_MULTINODE_FRONTDOOR	embARC OpenThread SmartHome(Front Door Node) Demo
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
+ * \ingroup	EMBARC_APPS_MID_MBEDTLS
  * \ingroup	EMBARC_APPS_MID_OPENTHREAD
- * \brief	OpenThread CoAP appllication on MRF24J40
+ * \brief	OpenThread SmartHome Demo(Front Door Node) demo using MRF24J40
  *
  * \details
  * ### Extra Required Tools
@@ -47,25 +48,25 @@
  *     * 1 x SD card
  *
  * ### Design Concept
- *     This appllication is an OpenThread CoAP application on PMOD RF2 (MRF24J40).
- *     The application layer of the appllication is built on top of the CoAP protocol. The server nodes provide one resource:
+ *     This application is an OpenThread CoAP application on PMOD RF2 (MRF24J40).
+ *     The application layer of the application is built on top of the CoAP protocol. The server nodes provide one resource:
  *       - FrontDoor's lock status (Use LED0 to simulate the FrontDoor's Lock status).
  *     The mesh network is established, and IPv6 is configured with using bi-/multi-boards as Thread nodes.
- *     The node status can be shown on the terminal via UART. There are dozens of commands supported in the appllication.
+ *     The node status can be shown on the terminal via UART. There are dozens of commands supported in the application.
  *
  * ### Usage Manual
  *     - See \ref EMBARC_BOARD_CONNECTION "EMSK" to connect PMOD RF2 (MRF24J40).
  *
- *     - How to use this appllication
+ *     - How to use this application
  *
  *       * Program the secondary bootloader application into onboard SPI flash of EMSK.
- *       * Generate boot.bin of the Openthread CoAP appllication using "make bin".
- *       * Run Openthread CoAP appllication with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable
+ *       * Generate boot.bin of the Openthread CoAP application using "make bin".
+ *       * Run Openthread CoAP application with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable
  *         the secondary bootloader.
  *         - Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
  *         - Start Thread process automatically, don't need to enter number in the Tera Term.
  *         - Wait 20 seconds for completing Thread configuration. Enter "state" to see the state of the node, leader or router.
- *         - Enter other commands of the OpenThread CLI to get more information. For appllication,
+ *         - Enter other commands of the OpenThread CLI to get more information. For application,
  *           "ipaddr" is used to show the IP address of the Thread node.
  *
  *
@@ -74,7 +75,7 @@
  *     * A few seconds are required to make connections of Thread nodes.
  *     * Use AC adapter to ensure a steady power supply.
  *     * Generate the pseudo-random number for OpenThread automatically.
- *       Make sure the number in all nodes are diffrent, using same number in different nodes may lead error.
+ *       Make sure the number in all nodes are different, using same number in different nodes may lead error.
  *     * Make sure the mbedtls has been updated to "mbedtls-2.4.1", for the current OpenThread in embARC.
  *
  */

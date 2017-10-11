@@ -32,11 +32,12 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_OT_SMARTHOME_MULTINODE_LIVINGROOM	embARC OpenThread application on MRF24J40
+ * \defgroup	EMBARC_APP_BAREMETAL_OT_SMARTHOME_MULTINODE_LIVINGROOM	embARC OpenThread SmartHome(LivingRoom Node) Demo
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
+ * \ingroup	EMBARC_APPS_MID_MBEDTLS
  * \ingroup	EMBARC_APPS_MID_OPENTHREAD
- * \brief	OpenThread CoAP application on MRF24J40
+ * \brief	OpenThread SmartHome(LivingRoom Node) demo using MRF24J40
  *
  * \details
  * ### Extra Required Tools
@@ -76,7 +77,7 @@
  *     * A few seconds are required to make connections of Thread nodes.
  *     * Use AC adapter to ensure a steady power supply.
  *     * Generate the pseudo-random number for OpenThread automatically.
- *       Make sure the number in all nodes are diffrent, using same number in different nodes may lead error.
+ *       Make sure the number in all nodes are different, using same number in different nodes may lead error.
  *     * Make sure the mbedtls has been updated to "mbedtls-2.4.1", for the current OpenThread in embARC.
  *
  */

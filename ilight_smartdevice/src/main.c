@@ -31,11 +31,10 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_FREERTOS_IOT_ILIGHT_SMARTDEVICE	embARC IOT iLight synthesize
+ * \defgroup	EMBARC_APP_FREERTOS_IOT_ILIGHT_SMARTDEVICE	embARC IoT iLight Smart Device
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_FATFS
- * \brief	embARC IOT iLight smartdevice
+ * \brief	embARC IoT iLight smartdevice
  *
  * \details
  * ### Extra Required Tools
@@ -94,7 +93,7 @@ void main()
 	mic_init();
 	imu_init(GYRO_RNG, ACCEL_RNG);
 	task_init();
-	
+
 	while(1) {
 		vTaskSuspend(NULL);
 	}

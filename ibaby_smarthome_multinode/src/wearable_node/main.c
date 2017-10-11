@@ -32,14 +32,14 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_FREERTOS_IOT_IBABY_SMARTHOME_MULTINODE_WEARABLE_NODE		embARC IOT iBaby Smarthome Node Wearable Node
+ * \defgroup	EMBARC_APP_FREERTOS_IOT_IBABY_SMARTHOME_MULTINODE_WEARABLE_NODE		embARC IoT iBaby Smarthome Node Wearable Node
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_OS_FREERTOS
  * \ingroup	EMBARC_APPS_MID_LWIP
  * \ingroup	EMBARC_APPS_MID_WAKAAMA
  * \ingroup	EMBARC_APPS_MID_FATFS
  * \ingroup	EMBARC_APPS_MID_AWS
- * \brief	embARC IOT iBaby Smarthome Node Wearable Node
+ * \brief	embARC IoT iBaby Smarthome Node Wearable Node
  *
  * \details
  * ### Extra Required Tools
