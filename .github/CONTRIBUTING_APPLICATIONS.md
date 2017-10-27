@@ -97,62 +97,58 @@ See the document **Example Usage Guide** - `./embarc_osp/doc/embARC_Document/htm
 2) Goto the folder `./embarc_osp/application`, create a new folder for your own application, like **smart_device**. Please notice that your application projects should be placed under the folder `./embarc_osp/application`, not `./embarc_osp/example`.
 
 3) Copy **example.makefile** and **main.c.tmpl** in `./embarc_osp/example` folder to the newly created **smart_device** folder.
+   + Rename example.makefile to **makefile**.
+   + Rename main.c.tmpl to **main.c.**
+   + Change the configurations in makefile according to your hardware configuration.
+   + Modify your main.c.
+   + Compile this application on the command line.
+   + Run or debug this application.
+    See the document **Example Usage Guide** in the [embARC OSP documentation][51] for more information.
+    >>> **Notices:**
+    >>>   All C source code must adhere to [**Linux Kernel Coding Style**][48]. The source-code files in embARC are documented with C-style code comments and Doxygen-based comments. A Doxygen comment example is shown below:
+    ~~~
+    /**
+     * \defgroup    EMBARC_APP_TMPL         embARC Template Example
+     * \ingroup     EMBARC_APPS_TOTAL
+     * \ingroup     EMBARC_APPS_BOARD_EMSK
+     * \ingroup     EMBARC_APPS_BAREMETAL
+     * \brief       embARC Example for template
+    
+     * \details
+     * ### Extra Required Tools
+    
+     * ### Extra Required Peripherals
+    
+     * ### Design Concept
+    
+     * ### Usage Manual
+    
+     * ### Extra Comments
+    
+    */
+    
+    /**
+     * \file
+     * \ingroup     EMBARC_APP_TMPL
+     * \brief       main source of template example
+     */
+    /**
+     * \addtogroup  EMBARC_APP_TMPL
+     * @{
+     */
+    /* embARC HAL */
+    #include "embARC.h"
+    #include "embARC_debug.h"
+    /** main entry */
+    int main(void)
+    {
+            EMBARC_PRINTF("Hello embARC from template example\r\n");
+            return E_SYS;
+    }
+    /** @} */
+    ~~~
 
-+ Rename example.makefile to **makefile**.
-+ Rename main.c.tmpl to **main.c.**
-+ Change the configurations in makefile according to your hardware configuration.
-+ Modify your main.c.
-+ Compile this application on the command line.
-+ Run or debug this application.
-
-   See the document **Example Usage Guide** in the *embarc\_osp* for more information.
-
-Notices:
-
-+ All C source code must adhere to [**Linux Kernel Coding Style**][48]. The source-code files in embARC are documented with C-style code comments and Doxygen-based comments. A Doxygen comment example is shown below:
-~~~
-/**
- * \defgroup    EMBARC_APP_TMPL         embARC Template Example
- * \ingroup     EMBARC_APPS_TOTAL
- * \ingroup     EMBARC_APPS_BOARD_EMSK
- * \ingroup     EMBARC_APPS_BAREMETAL
- * \brief       embARC Example for template
-
- * \details
- * ### Extra Required Tools
-
- * ### Extra Required Peripherals
-
- * ### Design Concept
-
- * ### Usage Manual
-
- * ### Extra Comments
-
-*/
-
-/**
- * \file
- * \ingroup     EMBARC_APP_TMPL
- * \brief       main source of template example
- */
-/**
- * \addtogroup  EMBARC_APP_TMPL
- * @{
- */
-/* embARC HAL */
-#include "embARC.h"
-#include "embARC_debug.h"
-/** main entry */
-int main(void)
-{
-        EMBARC_PRINTF("Hello embARC from template example\r\n");
-        return E_SYS;
-}
-/** @} */
-~~~
-
-+ See [Contributing to embARC OSP][49] for more information about Coding-Style, Document-Style and Git Commit Message Guide, etc.
+   + See [Contributing to embARC OSP][49] for more information about Coding-Style, Document-Style and Git Commit Message Guide, etc.
 
 4) Developing your application using [Git][40]. See [Git Book][41] for learning how to use it.
 
@@ -227,3 +223,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 [48]: https://github.com/torvalds/linux/blob/master/Documentation/process/coding-style.rst    "Linux Kernel Coding Style"
 [49]: https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.github/CONTRIBUTING.md    "Contributing to embARC OSP"
 [50]: http://embarc.org/embarc_osp/doc/embARC_Document/html/page_license.html    "License"
+[51]: http://embarc.org/embarc_osp/doc "embARC OSP Documentation"
