@@ -4,6 +4,8 @@
 
 For general guideline, **see the [embARC Contributing Guide](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.github/CONTRIBUTING.md).**
 
+For how to contribute to embARC application repository, **see the [embARC Application Contributing Guide](CONTRIBUTING_APPLICATIONS.md).**
+
 ## embARC Application Directory Structure
 If you want to contribute your embARC application to this repository, you need to follow the guideline.
 Each embARC application exists in this repository as a folder, such as *aws_iot_smarthome*.
