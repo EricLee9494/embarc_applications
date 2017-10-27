@@ -17,7 +17,7 @@ The hardware we used during development is **EM Starter Kit(aka EMSK)**. We need
 
 	+ Here we use [GNU Toolchain][31] in **windows** host.
 	+ For using GNU or other tools in different host, see [Getting Started with embARC OSP][32] for reference.
-	
+
 	![gnu_make][0]
 
 + Download and install [**Digilent Adapt Software**][33], driver for Digilent JTAG-USB cable.
@@ -28,7 +28,7 @@ The hardware we used during development is **EM Starter Kit(aka EMSK)**. We need
 	+ Before you can start using OpenOCD, you have to download WinUSB driver and replace with it one of FTDI drivers for your hardware development system.
 	+ See [How to Use OpenOCD on Windows][35] for reference.
 	+ For more information, see [ARC GNU Toolchain Wiki Home][36].
-	
+
 	![zadig][2]
 
 	Notices: To do that, you have to connect EMSK to PC using JTAG-USB cable. Then click on the *Options* - *List all devices*, and you can find **Digilent USB Device(Interface 0/1)**. Just replacing **Digilent USB Device(Interface 0)** to WinUSB driver, it helps PC to load executable file into EMSK.
@@ -41,14 +41,13 @@ The hardware we used during development is **EM Starter Kit(aka EMSK)**. We need
 	+ Get a [Github Account][39]. Download and install [Git][40]，and you have to learn how to develop projects using git. See [Git Book][41] for reference.
 	+ Download the [**embARC OSP**][37] and rename it to *embarc\_osp*.
 	+ Fork the *embarc\_applications* to your own repo. You will develop the project based on that in your host.
-	
+
 	![fork_app_repo][4]
 
 	+ Goto the folder `./embarc_osp`. Run the **Git Bash** and type the following commands to clone **embARC Applications** source code to `./embarc_osp/application` folder:
-		
+
 		    cd embarc_osp
-			git clone https://github.com/foss-for-synopsys-dwc-arc-processors
-			embarc_applications.git application
+			git clone https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications.git application
 
 	Then, you can see there are serval applications existing in this folder, such as *aws\_iot\_smarthome*, *aws\_iot\_smarthome\_multinode*, etc.
 
@@ -108,28 +107,28 @@ See the document **Example Usage Guide** - `./embarc_osp/doc/embARC_Document/htm
 
    See the document **Example Usage Guide** in the *embarc\_osp* for more information.
 
-Notices: 
+Notices:
 
 + All C source code must adhere to [**Linux Kernel Coding Style**][48]. The source-code files in embARC are documented with C-style code comments and Doxygen-based comments. A Doxygen comment example is shown below:
-
+~~~
 		/**
 		 * \defgroup    EMBARC_APP_TMPL         embARC Template Example
 		 * \ingroup     EMBARC_APPS_TOTAL
 		 * \ingroup     EMBARC_APPS_BOARD_EMSK
 		 * \ingroup     EMBARC_APPS_BAREMETAL
 		 * \brief       embARC Example for template
-		  
+
 		 * \details
 		 * ### Extra Required Tools
-		  
+
 		 * ### Extra Required Peripherals
-		  
+
 		 * ### Design Concept
-		  
+
 		 * ### Usage Manual
-		  
+
 		 * ### Extra Comments
-		  
+
 		 */
 		/**
 		 * \file
@@ -150,6 +149,7 @@ Notices:
 		        return E_SYS;
 		}
 		/** @} */
+~~~
 
 + See [Contributing to embARC OSP][49] for more information about Coding-Style, Document-Style and Git Commit Message Guide, etc.
 
@@ -187,7 +187,7 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. NY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-**For complete embARC license information, please refer to the embARC FOSS Notice** [License][50]. 
+**For complete embARC license information, please refer to the embARC FOSS Notice** [License][50].
 
 [0]: ./img/cmd_make.PNG                "gnu_make"
 [1]: ./img/digilent_adapt.PNG          "digilent_adapt"
@@ -208,7 +208,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 [30]: http://embarc.org/tools.html    "Development Tools"
 [31]: https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases    "GNU Toolchain"
 [32]: https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/wiki/Getting-Started-with-embARC-OSP    "Getting Started with embARC OSP"
-[33]: http://store.digilentinc.com/digilent-adept-2-download-only/    "Digilent Adapt Software"     
+[33]: http://store.digilentinc.com/digilent-adept-2-download-only/    "Digilent Adapt Software"
 [34]: http://zadig.akeo.ie/    "zadig"
 [35]: https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows    "How to Use OpenOCD on Windows"
 [36]: https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/wiki    "ARC GNU Toolchain Wiki Home"
