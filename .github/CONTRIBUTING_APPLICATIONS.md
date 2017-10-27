@@ -111,44 +111,45 @@ Notices:
 
 + All C source code must adhere to [**Linux Kernel Coding Style**][48]. The source-code files in embARC are documented with C-style code comments and Doxygen-based comments. A Doxygen comment example is shown below:
 ~~~
-		/**
-		 * \defgroup    EMBARC_APP_TMPL         embARC Template Example
-		 * \ingroup     EMBARC_APPS_TOTAL
-		 * \ingroup     EMBARC_APPS_BOARD_EMSK
-		 * \ingroup     EMBARC_APPS_BAREMETAL
-		 * \brief       embARC Example for template
+/**
+ * \defgroup    EMBARC_APP_TMPL         embARC Template Example
+ * \ingroup     EMBARC_APPS_TOTAL
+ * \ingroup     EMBARC_APPS_BOARD_EMSK
+ * \ingroup     EMBARC_APPS_BAREMETAL
+ * \brief       embARC Example for template
 
-		 * \details
-		 * ### Extra Required Tools
+ * \details
+ * ### Extra Required Tools
 
-		 * ### Extra Required Peripherals
+ * ### Extra Required Peripherals
 
-		 * ### Design Concept
+ * ### Design Concept
 
-		 * ### Usage Manual
+ * ### Usage Manual
 
-		 * ### Extra Comments
+ * ### Extra Comments
 
-		 */
-		/**
-		 * \file
-		 * \ingroup     EMBARC_APP_TMPL
-		 * \brief       main source of template example
-		 */
-		/**
-		 * \addtogroup  EMBARC_APP_TMPL
-		 * @{
-		 */
-		/* embARC HAL */
-		#include "embARC.h"
-		#include "embARC_debug.h"
-		/** main entry */
-		int main(void)
-		{
-		        EMBARC_PRINTF("Hello embARC from template example\r\n");
-		        return E_SYS;
-		}
-		/** @} */
+*/
+
+/**
+ * \file
+ * \ingroup     EMBARC_APP_TMPL
+ * \brief       main source of template example
+ */
+/**
+ * \addtogroup  EMBARC_APP_TMPL
+ * @{
+ */
+/* embARC HAL */
+#include "embARC.h"
+#include "embARC_debug.h"
+/** main entry */
+int main(void)
+{
+        EMBARC_PRINTF("Hello embARC from template example\r\n");
+        return E_SYS;
+}
+/** @} */
 ~~~
 
 + See [Contributing to embARC OSP][49] for more information about Coding-Style, Document-Style and Git Commit Message Guide, etc.
