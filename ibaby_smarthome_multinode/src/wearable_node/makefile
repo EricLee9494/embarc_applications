@@ -1,6 +1,8 @@
 # Application name
 APPL ?= wearable_node
 
+EXT_DEV_LIST += wifi/mrf24g
+
 # Selected OS
 OS_SEL ?= freertos
 

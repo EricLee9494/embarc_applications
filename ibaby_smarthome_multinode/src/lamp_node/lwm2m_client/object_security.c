@@ -14,7 +14,7 @@
  *    David Navarro, Intel Corporation - initial API and implementation
  *    Bosch Software Innovations GmbH - Please refer to git log
  *    Pascal Rieux - Please refer to git log
- *    
+ *
  *******************************************************************************/
 
 /*
@@ -445,7 +445,7 @@ lwm2m_object_t * get_security_object(int serverId, const char* serverUri, bool i
 
 		memset(targetP, 0, sizeof(security_instance_t));
 		targetP->instanceId = 0;
-		targetP->uri = (char*)lwm2m_malloc(strlen(serverUri)+1); 
+		targetP->uri = (char*)lwm2m_malloc(strlen(serverUri)+1);
 		strcpy(targetP->uri, serverUri);
 		targetP->isBootstrap = isBootstrap;
 		targetP->shortID = serverId;

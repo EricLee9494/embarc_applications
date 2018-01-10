@@ -88,13 +88,13 @@ static void btn_a_isr(void *ptr)
  */
 extern void btn_init(void)
 {
-	DEV_GPIO_BIT_ISR bit_isr; 
+	DEV_GPIO_BIT_ISR bit_isr;
 	DEV_GPIO_INT_CFG int_cfg;
 
 	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
 	int_cfg.int_bit_mask = BTN_BIT_MASK;
-	int_cfg.int_bit_type = BTN_BIT_MASK; 
-	int_cfg.int_bit_polarity = BTN_ACTIVE_LOW; 
+	int_cfg.int_bit_type = BTN_BIT_MASK;
+	int_cfg.int_bit_polarity = BTN_ACTIVE_LOW;
 	int_cfg.int_bit_debounce = BTN_BIT_MASK;
 
 	port->gpio_control(GPIO_CMD_SET_BIT_INT_CFG, &int_cfg);

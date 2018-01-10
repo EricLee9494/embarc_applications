@@ -1,6 +1,8 @@
 # Application name
 APPL ?= lamp_node
 
+EXT_DEV_LIST += wifi/mrf24g
+
 # Selected OS
 OS_SEL ?= freertos
 
