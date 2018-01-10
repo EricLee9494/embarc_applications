@@ -6,6 +6,8 @@
 # Application name
 APPL ?= synthesize
 
+EXT_DEV_LIST += wifi/mrf24g
+
 # Optimization Level
 # Please Refer to toolchain_xxx.mk for this option
 OLEVEL ?= O2
