@@ -120,11 +120,12 @@
 #include "aws_iot_shadow_interface.h"
 
 #include "embARC.h"
-#include "os_hal_inc.h"
 
 #if defined(AWSDEMO_HAVE_OLED) && defined(MID_U8GLIB)
 #include "u8g.h"
 #endif
+
+#include "adt7420.h"
 
 #ifdef PATH_MAX
 #undef PATH_MAX
@@ -141,6 +142,13 @@
 
 #define CERT_ROOTDIR                            "cert/smarthome"
 
+#ifdef BOARD_EMSK
+#define PRESS_BUTTON_GPIO_PORT			EMSK_BUTTON_PORT
+#else
+#define PRESS_BUTTON_GPIO_PORT			DEV_GPIO_PORT_NC
+#endif
+
+static ADT7420_DEFINE(temperature_sensor, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
 
 // initialize the mqtt client
 AWS_IoT_Client mqttClient;
@@ -224,7 +232,7 @@ static void u8g_draw(void)
 
 static void init_display(void)
 {
-	u8g_InitComFn(&u8g, &u8g_dev_ssd1306_128x64_2x_i2c1, U8G_COM_SSD_I2C1);
+	u8g_InitComFn(&u8g, &u8g_dev_ssd1306_128x64_2x_i2c, U8G_COM_SSD_I2C);
 	u8g_Begin(&u8g);
 	u8g_draw();
 }
@@ -261,10 +269,8 @@ static bool getRoomTemperature(float *pRoomTemperature)
 #ifdef SIMULATE_TEMPERATURE
 	simulateRoomTemperature(pRoomTemperature);
 #else
-	int32_t val = STARTING_ROOMTEMPERATURE;
 	float cur_temp;
-	temp_sensor_read(&val);
-	cur_temp = (float)val / 10;
+	adt7420_sensor_read(temperature_sensor, &cur_temp);
 	if (cur_temp == (*pRoomTemperature)) {
 		return false;
 	} else {
@@ -718,10 +724,14 @@ static void smarthome_init(void)
 	DEV_GPIO_BIT_ISR bit_isr;
 	DEV_GPIO_INT_CFG int_cfg;
 
-	temp_sensor_init(TEMP_I2C_SLAVE_ADDRESS);
+	adt7420_sensor_init(temperature_sensor);
 
-	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
+	DEV_GPIO_PTR port = gpio_get_dev(PRESS_BUTTON_GPIO_PORT);
 
+	if (port == NULL) {
+		IOT_WARN("No press button available on this board!\r\n");
+		return;
+	}
 	port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
 
 	int_cfg.int_bit_mask = BUTTON_USED_MASK;
@@ -752,7 +762,9 @@ static void smarthome_init(void)
 
 static void smarthome_close(void)
 {
-	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
-	port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
+	DEV_GPIO_PTR port = gpio_get_dev(PRESS_BUTTON_GPIO_PORT);
+	if (port != NULL) {
+		port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
+	}
 }
 /** @} */
