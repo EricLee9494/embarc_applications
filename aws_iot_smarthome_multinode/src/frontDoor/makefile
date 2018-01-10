@@ -1,6 +1,8 @@
 # Application name
 APPL ?= freertos_iot_aws_frontdoor_node
 
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
+
 # Heap Size Settings
 HEAPSZ ?= 1048676
 STACKSZ ?= 1048576

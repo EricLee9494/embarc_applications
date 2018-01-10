@@ -110,6 +110,7 @@
 #include "aws_iot_shadow_interface.h"
 
 #include "embARC.h"
+#include "adt7420.h"
 
 
 #ifdef PATH_MAX
@@ -118,6 +119,12 @@
 #define PATH_MAX 256
 
 #define MAX_LENGTH_OF_UPDATE_JSON_BUFFER 512
+
+#ifdef BOARD_EMSK
+#define PRESS_BUTTON_GPIO_PORT			EMSK_BUTTON_PORT
+#else
+#define PRESS_BUTTON_GPIO_PORT			DEV_GPIO_PORT_NC
+#endif
 
 // initialize the mqtt client
 AWS_IoT_Client mqttClient;
@@ -136,6 +143,7 @@ static jsonStruct_t FrontDoorActuator;
 static jsonStruct_t TemperatureHandler;
 
 static jsonStruct_t *curActuator[2];
+static ADT7420_DEFINE(temperature_sensor, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
 
 #define CERT_ROOTDIR	"cert/frontdoor"
 
@@ -149,10 +157,9 @@ static char clientKeyName[] = AWS_IOT_PRIVATE_KEY_FILENAME;
 
 static bool getRoomTemperature(float *pRoomTemperature)
 {
-	int32_t val = 0;
 	float cur_temp;
-	temp_sensor_read(&val);
-	cur_temp = (float)val / 10;
+	adt7420_sensor_read(temperature_sensor, &cur_temp);
+
 	if (cur_temp == (*pRoomTemperature)) {
 		return false;
 	} else {
@@ -493,9 +500,14 @@ static void smarthome_init(void)
 	DEV_GPIO_BIT_ISR bit_isr;
 	DEV_GPIO_INT_CFG int_cfg;
 
-	temp_sensor_init(TEMP_I2C_SLAVE_ADDRESS);
+	adt7420_sensor_init(temperature_sensor);
 
-	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
+	DEV_GPIO_PTR port = gpio_get_dev(PRESS_BUTTON_GPIO_PORT);
+
+	if (port == NULL) {
+		IOT_WARN("No press button available on this board!\r\n");
+		return;
+	}
 
 	port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
 
@@ -517,7 +529,9 @@ static void smarthome_init(void)
 
 static void smarthome_close(void)
 {
-	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
-	port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
+	DEV_GPIO_PTR port = gpio_get_dev(PRESS_BUTTON_GPIO_PORT);
+	if (port != NULL) {
+		port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
+	}
 }
 /** @} */

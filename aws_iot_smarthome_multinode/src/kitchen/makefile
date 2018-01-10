@@ -1,6 +1,8 @@
 # Application name
 APPL ?= freertos_iot_aws_kitchen_node
 
+EXT_DEV_LIST += wifi/mrf24g
+
 # Heap Size Settings
 HEAPSZ ?= 1048676
 STACKSZ ?= 1048576

@@ -115,6 +115,13 @@
 #endif
 #define PATH_MAX 256
 
+
+#ifdef BOARD_EMSK
+#define PRESS_BUTTON_GPIO_PORT			EMSK_BUTTON_PORT
+#else
+#define PRESS_BUTTON_GPIO_PORT			DEV_GPIO_PORT_NC
+#endif
+
 #define MAX_LENGTH_OF_UPDATE_JSON_BUFFER 512
 
 // initialize the mqtt client
@@ -465,9 +472,12 @@ static void smarthome_init(void)
 	DEV_GPIO_BIT_ISR bit_isr;
 	DEV_GPIO_INT_CFG int_cfg;
 
-	temp_sensor_init(TEMP_I2C_SLAVE_ADDRESS);
+	DEV_GPIO_PTR port = gpio_get_dev(PRESS_BUTTON_GPIO_PORT);
 
-	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
+	if (port == NULL) {
+		IOT_WARN("No press button available on this board!\r\n");
+		return;
+	}
 
 	port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
 
@@ -489,7 +499,9 @@ static void smarthome_init(void)
 
 static void smarthome_close(void)
 {
-	DEV_GPIO_PTR port = gpio_get_dev(EMSK_BUTTON_PORT);
-	port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
+	DEV_GPIO_PTR port = gpio_get_dev(PRESS_BUTTON_GPIO_PORT);
+	if (port != NULL) {
+		port->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)BUTTON_USED_MASK);
+	}
 }
 /** @} */
