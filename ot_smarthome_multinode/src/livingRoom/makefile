@@ -1,6 +1,8 @@
 # Application name
 APPL ?= ot_smarthome_livingroom
 
+EXT_DEV_LIST += 802_15_4/mrf24j40 sensor/temperature/adt7420
+
 # Optimization Level
 OLEVEL = O2
 

@@ -97,6 +97,8 @@
 
 #include <openthread/config.h>
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 
 #include <openthread/openthread.h>
@@ -105,6 +107,7 @@
 #include <openthread/cli.h>
 #include <openthread/thread_ftd.h>
 #include <openthread/platform/platform.h>
+#include "adt7420.h"
 
 
 #define LED0 (0x01)
@@ -139,6 +142,12 @@
 #define T1_STA_STARTED (1)
 
 #define T1_COUNT_5s    (5)
+
+#ifdef __MW__
+#define itoa		_itoa
+#endif
+
+static ADT7420_DEFINE(temperature_sensor, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
 
 static char light_sta;
 volatile static uint8_t flag_send_light_sta,
@@ -500,6 +509,7 @@ static void temp_request_send(otInstance * p_instance, char* temp)
 static void request_send_scan(void)
 {
 	int32_t val = 0;
+	float cur_temp;
 	char *temp = "0";
 
 	if (flag_send_light_sta == REQUEST_SEND) {
@@ -510,7 +520,8 @@ static void request_send_scan(void)
 	if (flag_send_temp == REQUEST_SEND) {
 		flag_send_temp = REQUEST_NONE;
 
-		if (E_OK != temp_sensor_read(&val)) {
+		if (E_OK != adt7420_sensor_read(temperature_sensor, &cur_temp)) {
+			val = (int32_t)(cur_temp * 10);
 			EMBARC_PRINTF("err: Failed to read temperature\r\n");
 			return;
 		}
@@ -558,7 +569,7 @@ static void emsk_board_init(void)
 {
 	btn_init();
 
-	if (E_OK != temp_sensor_init(BOARD_TEMP_IIC_SLVADDR)) {
+	if (E_OK != adt7420_sensor_init(temperature_sensor)) {
 		EMBARC_PRINTF("err: Failed to init temperature sensor\r\n");
 	}
 }

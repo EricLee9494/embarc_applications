@@ -1,6 +1,8 @@
 # Application name
 APPL ?= ot_smarthome_frontdoor
 
+EXT_DEV_LIST += 802_15_4/mrf24j40
+
 # Optimization Level
 OLEVEL = O2
 
