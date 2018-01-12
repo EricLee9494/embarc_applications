@@ -13,8 +13,6 @@
  * permissions and limitations under the License.
  *
  * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2017.03
- * \date 2016-01-26
  */
 
 /**
