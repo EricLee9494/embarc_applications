@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.09
- * \date 2017-09-27
- * \author Zhiwei Zhang(1812816853@qq.com)
 --------------------------------------------- */
 
 /**
