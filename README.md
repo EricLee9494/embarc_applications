@@ -30,4 +30,4 @@ Here are steps to use this repo.
         * This smarthome demo implements 2 different nodes to talk to OpenThread Smarthome Gateway.
 
 ## How to contribute to it
-We welcome embARC Applications community contributions. Please check out the [Contributing to embARC OSP](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.github/CONTRIBUTING.md) for guidelines on how to proceed. Users participating in the embARC Community and its sub-projects codebases and issue trackers are expected to follow the [embARC code of conduct](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.github/CODE_OF_CONDUCT.md).
+We welcome embARC Applications community contributions. Please check out the [Contributing to embARC OSP and Applications](.github/CONTRIBUTING.md) for guidelines on how to proceed. Users participating in the embARC Community and its sub-projects codebases and issue trackers are expected to follow the [embARC code of conduct](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.github/CODE_OF_CONDUCT.md).
